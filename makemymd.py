@@ -33,7 +33,7 @@ for path, dirs, files in os.walk('.'):
         if ext not in imgExts:
             continue
         else:
-            figs.append('![Abbildung](https://github.com/balzer82/DresdenData/blob/master/' + fileName + '?raw=true)')
+            figs.append('![Abbildung](https://github.com/balzer82/Dresden-Haushalt/blob/master/' + fileName + '?raw=true)')
             
 figstring='\n\n'.join(figs)
 f.write(figstring)
