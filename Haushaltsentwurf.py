@@ -13,6 +13,22 @@ sns.set_style("whitegrid")
 
 # <codecell>
 
+def strcleaner(s):
+    repl={}
+    repl['ä'] = 'ae'
+    repl['Ä'] = 'Ae'
+    repl['ü'] = 'ue'
+    repl['Ü'] = 'Ue'
+    repl['ö'] = 'oe'
+    repl['Ö'] = 'Oe'
+    sclear = reduce(lambda a, kv: a.replace(*kv), repl.iteritems(), s)
+    return sclear
+
+# <codecell>
+
+
+# <codecell>
+
 data = pd.read_csv('./876d8fd0190df52ffb4c/haushaltsentwurf-2015_16.csv')
 
 # <codecell>
@@ -116,7 +132,7 @@ for i, ((Produktbereichsbezeichnung, Produktbezeichnung), group) in enumerate(Pr
     Amtsa['Ansatz'].plot(kind='barh', figsize=(10, 0.2*len(Amtsa)), label='', color=colors, title=Produktbezeichnung.decode('utf-8'))
 
     plt.tight_layout()
-    plt.savefig('Amtsbudgets-%02d-%s.png' % (i, urllib.quote(Produktbezeichnung)), transparent=True)
+    plt.savefig('Amtsbudgets-%02d-%s.png' % (i, strcleaner(Produktbezeichnung)), transparent=True)
     plt.close()
 
 # <headingcell level=3>
@@ -156,7 +172,7 @@ for i, ((Produktbereichsbezeichnung, Produktbezeichnung), group) in enumerate(Pr
     
     plt.tight_layout()
     
-    plt.savefig('Amtsbudgets-%02d-%s-Pie.png' % (i, urllib.quote(Produktbezeichnung)), transparent=True)
+    plt.savefig('Amtsbudgets-%02d-%s-Pie.png' % (i, strcleaner(Produktbezeichnung)), transparent=True)
     plt.close()    
 
 # <headingcell level=2>
