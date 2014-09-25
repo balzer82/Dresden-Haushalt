@@ -4,6 +4,13 @@
 # <codecell>
 
 import os
+import urllib
+
+# <codecell>
+
+
+# <codecell>
+
 
 # <codecell>
 
@@ -13,7 +20,7 @@ f=open('README.md','w')
 
 prestring="""
 # Haushaltsentwurf Dresden 2015/2016
-Gemacht mit einem Offenem Haushalt*
+Gemacht mit einem Offenen Haushalt*
 --------
 
 *nein, eigentlich nicht, denn er ist in Dresden noch nicht offen
@@ -25,16 +32,17 @@ f.write(prestring)
 
 # <codecell>
 
+baseurl = '![Abbildung](https://raw.githubusercontent.com/balzer82/Dresden-Haushalt/master/'
 figs=[]
-imgExts = ["png"]
 for path, dirs, files in os.walk('.'):
     for fileName in files:
-        ext = fileName[-3:].lower()
-        if ext not in imgExts:
-            continue
-        else:
-            figs.append('![Abbildung](https://github.com/balzer82/Dresden-Haushalt/blob/master/' + fileName + '?raw=true)')
+        if fileName.endswith('.png'):
             
+            figs.append(baseurl + fileName + ')')
+
+figs.sort()
+figs.reverse()
+
 figstring='\n\n'.join(figs)
 f.write(figstring)
 
@@ -54,6 +62,8 @@ poststring ="""
 """
 f.write(poststring)
 f.close()
+
+print('Done.')
 
 # <codecell>
 

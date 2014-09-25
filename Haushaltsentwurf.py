@@ -116,7 +116,7 @@ for i, ((Produktbereichsbezeichnung, Produktbezeichnung), group) in enumerate(Pr
     Amtsa['Ansatz'].plot(kind='barh', figsize=(10, 0.2*len(Amtsa)), label='', color=colors, title=Produktbezeichnung.decode('utf-8'))
 
     plt.tight_layout()
-    plt.savefig('Amtsbudgets-%02d-%s.png' % (i, Produktbezeichnung), transparent=True)
+    plt.savefig('Amtsbudgets-%02d-%s.png' % (i, urllib.quote(Produktbezeichnung)), transparent=True)
     plt.close()
 
 # <headingcell level=3>
@@ -156,7 +156,7 @@ for i, ((Produktbereichsbezeichnung, Produktbezeichnung), group) in enumerate(Pr
     
     plt.tight_layout()
     
-    plt.savefig('Amtsbudgets-%02d-%s-Pie.png' % (i, Produktbezeichnung), transparent=True)
+    plt.savefig('Amtsbudgets-%02d-%s-Pie.png' % (i, urllib.quote(Produktbezeichnung)), transparent=True)
     plt.close()    
 
 # <headingcell level=2>
