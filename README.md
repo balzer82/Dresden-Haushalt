@@ -7,9 +7,6 @@ Gemacht mit einem Offenen Haushalt*
 
 ## Haushaltsentwurf 2015 (in mio EUR)
 
-![Abbildung](https://raw.githubusercontent.com/balzer82/Dresden-Haushalt/master/Top10Einnahmen.png)
-
-![Abbildung](https://raw.githubusercontent.com/balzer82/Dresden-Haushalt/master/Top10Ausgaben.png)
 
 ![Abbildung](https://raw.githubusercontent.com/balzer82/Dresden-Haushalt/master/Top10.png)
 
