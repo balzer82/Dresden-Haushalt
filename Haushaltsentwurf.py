@@ -51,10 +51,17 @@ data2015.head(5)
 # <codecell>
 
 def calcAnsatz(df):
-    if df.direction=='Ertrag':
+    if df.direction=='Ertrag' and df.amount>=0:
         return np.round(df['amount']/1e6, 2)
-    elif df.direction=='Aufwendung':
-        return np.round(1.0*df['amount']/1e6, 2)
+    elif df.direction=='Ertrag' and df.amount<0:
+        return np.round(df['amount']/1e6, 2)
+    elif df.direction=='Aufwendung' and df.amount>=0:
+        return np.round(-1.0*df['amount']/1e6, 2)
+    elif df.direction=='Aufwendung' and df.amount<0:
+        return np.round(df['amount']/1e6, 2)
+
+# <codecell>
+
 
 # <codecell>
 
@@ -195,7 +202,7 @@ ProduktbereicheSort.to_csv('Haushaltsentwurf2015.csv', drop_index=True, float_fo
 
 colors = sns.blend_palette(["red", "mediumseagreen"], len(Produktbereiche))
 ProduktbereicheSort['Ansatz'].plot(kind='barh', figsize=(14,20), color=colors, label='', title='Dresden Entwurf Haushaltsplan 2015 (in mio EUR)')
-plt.axvline(Produktbereiche['Ansatz'].sum().mean(), alpha=0.6)
+plt.axvline(ProduktbereicheSort['Ansatz'].mean(), alpha=0.6)
 plt.tight_layout()
 plt.savefig('Haushaltsentwurf2015.png', dpi=150, transparent=True)
 

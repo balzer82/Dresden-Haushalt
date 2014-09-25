@@ -283,6 +283,24 @@ Gemacht mit einem Offenen Haushalt*
 ## Datenquelle
 [PDF Scraper](https://gist.github.com/Mic92/876d8fd0190df52ffb4c)
 
+## Offene Fragen
+
+Die Berechnung der Richtung der Zahlungsströme (Einnahmen/Ausgaben) erfolgt mit dieser Logik:
+
+```python
+def calcAnsatz(df):
+    if df.direction=='Ertrag' and df.amount>=0:
+        return np.round(df['amount']/1e6, 2)
+    elif df.direction=='Ertrag' and df.amount<0:
+        return np.round(df['amount']/1e6, 2)
+    elif df.direction=='Aufwendung' and df.amount>=0:
+        return np.round(-1.0*df['amount']/1e6, 2)
+    elif df.direction=='Aufwendung' and df.amount<0:
+        return np.round(df['amount']/1e6, 2)
+```
+
+Ist das korrekt?
+
 ## Kontakt
 
 [Open Knowledge Foundation / OKLab Dresden](http://OKDD.de)
